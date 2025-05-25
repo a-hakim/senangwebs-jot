@@ -44,28 +44,28 @@ SenangWebs Jot is built using Webpack. The library's core files are located in t
         ```bash
         npm run dev
         ```
-    This will generate `swj.min.js`, `swj.min.css` (for production) or `swj.js`, `swj.css` (for development) in the `dist/` folder.
+    This will generate `swj.js`, `swj.css` (for production) or `swj.js`, `swj.css` (for development) in the `dist/` folder.
 
 ### Using Pre-built Distributable Files (CDN-like or Direct Include)
 
 1.  **Include the CSS**:
-    Link the `swj.min.css` (or `swj.css` for development) file in the `<head>` of your HTML:
+    Link the `swj.css` (or `swj.css` for development) file in the `<head>` of your HTML:
     ```html
     <!-- If using local dist files -->
-    <link rel="stylesheet" href="path/to/dist/swj.min.css">
+    <link rel="stylesheet" href="path/to/dist/swj.css">
 
     <!-- Or if using a CDN (replace with actual CDN link if available) -->
-    <link rel="stylesheet" href="https://unpkg.com/senangwebs-jot@latest/dist/swj.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/senangwebs-jot@latest/dist/swj.css">
     ```
 
 2.  **Include the JavaScript**:
-    Add the `swj.min.js` (or `swj.js` for development) script to your HTML file, preferably at the end of the `<body>` tag:
+    Add the `swj.js` (or `swj.js` for development) script to your HTML file, preferably at the end of the `<body>` tag:
     ```html
     <!-- If using local dist files -->
-    <script src="path/to/dist/swj.min.js"></script>
+    <script src="path/to/dist/swj.js"></script>
 
     <!-- Or if using a CDN (replace with actual CDN link if available) -->
-    <script src="https://unpkg.com/senangwebs-jot@latest/dist/swj.min.js"></script>
+    <script src="https://unpkg.com/senangwebs-jot@latest/dist/swj.js"></script>
     ```
     The library initializes itself automatically on `DOMContentLoaded`.
 
@@ -98,7 +98,7 @@ SenangWebs Jot is built using Webpack. The library's core files are located in t
 
 ### Button Styling and Text
 
-The library uses CSS classes defined in `src/swj.css` (and bundled into `dist/swj.min.css` or `dist/swj.css`) to style the copy buttons according to their state. These classes are:
+The library uses CSS classes defined in `src/swj.css` (and bundled into `dist/swj.css` or `dist/swj.css`) to style the copy buttons according to their state. These classes are:
 
 -   **Base Button Class**: `swj-button`
 -   **Default State**: `swj-button-default`
