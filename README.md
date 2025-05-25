@@ -1,6 +1,6 @@
 # SenangWebs Jot (SWJ)
 
-SenangWebs Jot (SWJ) is a simple JavaScript tool that lets you copy text from HTML elements with a single click.
+Lightweight JavaScript tool that lets you copy text from HTML elements with a single click.
 
 ## Features
 
