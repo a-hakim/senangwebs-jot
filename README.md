@@ -21,7 +21,7 @@ After running `npm run build` or `npm run dev`, an `index.html` file will be gen
 
 SenangWebs Jot is built using Webpack. The library's core files are located in the `src/` directory, and the distributable, production-ready files are generated in the `dist/` directory.
 
-### Using npm (Recommended for Development)
+### Using npm
 
 1.  **Clone the Repository** (if you haven't already):
     ```bash
@@ -46,7 +46,7 @@ SenangWebs Jot is built using Webpack. The library's core files are located in t
         ```
     This will generate `swj.js`, `swj.css` (for production) or `swj.js`, `swj.css` (for development) in the `dist/` folder.
 
-### Using Pre-built Distributable Files (CDN-like or Direct Include)
+### Using CDN
 
 1.  **Include the CSS**:
     Link the `swj.css` (or `swj.css` for development) file in the `<head>` of your HTML:
