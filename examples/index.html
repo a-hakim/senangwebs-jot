@@ -1,69 +1,335 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SenangWebs Jot - Demo</title>
-    <link rel="stylesheet" href="../dist/swj.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SenangWebs Jot - Premium Demo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../dist/swj.css" />
     <script src="../dist/swj.js" defer></script>
-</head>
-<body class="font-sans p-5 bg-gray-100">
-    <div class="container">
-        <header class="text-center mb-8">
-            <h1 class="text-3xl font-bold">SenangWebs Jot (SWJ) - Demo</h1>
-            <p class="text-gray-600">A simple library to copy text to clipboard.</p>
-        </header>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ["Inter", "sans-serif"],
+            },
+            colors: {
+              brand: {
+                50: "#eff6ff",
+                100: "#dbeafe",
+                500: "#3b82f6",
+                600: "#2563eb",
+                700: "#1d4ed8",
+              },
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col">
+    <!-- Main Content -->
+    <main id="examples" class="flex-grow py-12 px-4 sm:px-6 lg:px-8">
+      <div class="max-w-5xl mx-auto space-y-12">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <!-- Example 1 -->
+          <div
+            class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden hover:shadow-md transition-shadow duration-300"
+          >
+            <div class="p-6 border-b border-slate-100 bg-slate-50/50">
+              <h3
+                class="text-lg font-semibold text-slate-900 flex items-center gap-2"
+              >
+                <svg
+                  class="w-5 h-5 text-brand-500"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                  ></path>
+                </svg>
+                Textarea
+              </h3>
+            </div>
+            <div class="p-6 space-y-4">
+              <div>
+                <label
+                  for="textAreaContent"
+                  class="block text-sm font-medium text-slate-700 mb-1"
+                  >Content to copy</label
+                >
+                <textarea
+                  id="textAreaContent"
+                  data-swj-id="copy-textarea"
+                  data-swj-value
+                  rows="3"
+                  class="w-full rounded-lg border-slate-300 border shadow-sm focus:border-brand-500 focus:ring-brand-500 p-3 text-slate-600 text-sm"
+                >
+This is some text inside a textarea. It preserves formatting and line breaks.</textarea
+                >
+              </div>
+              <div class="flex justify-end">
+                <button
+                  type="button"
+                  data-swj-copy="copy-textarea"
+                  class="swj-button"
+                >
+                  Copy Text
+                </button>
+              </div>
+            </div>
+          </div>
 
-        <div class="example-section">
-            <h2>Example 1: Copy from Textarea</h2>
-            <label for="textAreaContent">Text to copy:</label>
-            <textarea id="textAreaContent" data-swj-id="copy-textarea" data-swj-value rows="3">This is some text inside a textarea.</textarea>
-            <button type="button" data-swj-copy="copy-textarea">Copy from Textarea</button>
+          <!-- Example 2 -->
+          <div
+            class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden hover:shadow-md transition-shadow duration-300"
+          >
+            <div class="p-6 border-b border-slate-100 bg-slate-50/50">
+              <h3
+                class="text-lg font-semibold text-slate-900 flex items-center gap-2"
+              >
+                <svg
+                  class="w-5 h-5 text-brand-500"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"
+                  ></path>
+                </svg>
+                Input Field
+              </h3>
+            </div>
+            <div class="p-6 space-y-4">
+              <div>
+                <label
+                  for="inputContent"
+                  class="block text-sm font-medium text-slate-700 mb-1"
+                  >Share Link</label
+                >
+                <div class="relative rounded-md shadow-sm">
+                  <input
+                    type="text"
+                    id="inputContent"
+                    data-swj-id="copy-input"
+                    data-swj-value
+                    value="https://example.com/share-this"
+                    class="block w-full rounded-lg border-slate-300 border p-3 pr-10 focus:border-brand-500 focus:ring-brand-500 sm:text-sm text-slate-600"
+                  />
+                </div>
+              </div>
+              <div class="flex justify-end">
+                <button
+                  type="button"
+                  data-swj-copy="copy-input"
+                  class="swj-button"
+                >
+                  Copy Link
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Example 3 -->
+          <div
+            class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden hover:shadow-md transition-shadow duration-300 md:col-span-2"
+          >
+            <div class="p-6 border-b border-slate-100 bg-slate-50/50">
+              <h3
+                class="text-lg font-semibold text-slate-900 flex items-center gap-2"
+              >
+                <svg
+                  class="w-5 h-5 text-brand-500"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M4 6h16M4 12h16M4 18h7"
+                  ></path>
+                </svg>
+                Div Content
+              </h3>
+            </div>
+            <div class="p-6 space-y-4">
+              <div class="bg-slate-50 rounded-lg border border-slate-200 p-4">
+                <div
+                  class="copyable-div text-slate-600 leading-relaxed"
+                  data-swj-id="copy-div"
+                  data-swj-value
+                >
+                  This is text content directly within a &lt;div&gt; element. It
+                  can span multiple lines and contain rich text. SWJ extracts
+                  the text content efficiently.
+                </div>
+              </div>
+              <div class="flex justify-end">
+                <button
+                  type="button"
+                  data-swj-copy="copy-div"
+                  class="swj-button"
+                >
+                  Copy Content
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Example 4 -->
+          <div
+            class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden hover:shadow-md transition-shadow duration-300 md:col-span-2"
+          >
+            <div class="p-6 border-b border-slate-100 bg-slate-50/50">
+              <h3
+                class="text-lg font-semibold text-slate-900 flex items-center gap-2"
+              >
+                <svg
+                  class="w-5 h-5 text-brand-500"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
+                  ></path>
+                </svg>
+                Code Block
+              </h3>
+            </div>
+            <div class="p-0 bg-slate-900">
+              <div
+                class="flex justify-between items-center px-4 py-2 bg-slate-800 border-b border-slate-700"
+              >
+                <span class="text-xs font-mono text-slate-400">example.js</span>
+                <button
+                  type="button"
+                  data-swj-copy="copy-code"
+                  class="swj-button text-xs py-1 px-3"
+                >
+                  Copy Code
+                </button>
+              </div>
+              <pre
+                class="p-4 overflow-x-auto text-sm font-mono leading-relaxed text-slate-300"
+              ><code data-swj-id="copy-code" data-swj-value>function greet(name) {
+    console.log(`Hello, ${name}!`);
+    return true;
+}
+
+// Initialize the greeter
+greet('Developer');</code></pre>
+            </div>
+          </div>
         </div>
 
-        <div class="example-section">
-            <h2>Example 2: Copy from Input Field</h2>
-            <label for="inputContent">Link to copy:</label>
-            <input type="text" id="inputContent" data-swj-id="copy-input" data-swj-value value="https://example.com/share-this">
-            <button type="button" data-swj-copy="copy-input">Copy Link</button>
-        </div>
+        <!-- Error Handling Section -->
+        <div class="border-t border-slate-200 pt-12">
+          <h2 class="text-2xl font-bold text-slate-900 mb-6 text-center">
+            Error Handling Showcase
+          </h2>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <!-- Error 1 -->
+            <div class="bg-red-50 rounded-xl p-6 border border-red-100">
+              <h4 class="font-semibold text-red-800 mb-2">Missing Target</h4>
+              <p class="text-sm text-red-600 mb-4">
+                Button targets a non-existent ID.
+              </p>
+              <button
+                type="button"
+                data-swj-copy="non-existent-id"
+                class="swj-button w-full justify-center"
+              >
+                Try Copying
+              </button>
+            </div>
 
-        <div class="example-section">
-            <h2>Example 3: Copy from a Div Element</h2>
-            <label>Content in a div:</label>
-            <div class="copyable-div" data-swj-id="copy-div" data-swj-value>This is text content directly within a &lt;div&gt; element. It can span multiple lines.</div>
-            <button type="button" data-swj-copy="copy-div">Copy Div Content</button>
-        </div>
+            <!-- Error 2 -->
+            <div class="bg-red-50 rounded-xl p-6 border border-red-100">
+              <h4 class="font-semibold text-red-800 mb-2">Missing Attribute</h4>
+              <p class="text-sm text-red-600 mb-4">
+                Source missing `data-swj-value`.
+              </p>
+              <div data-swj-id="no-value-attr" class="hidden">
+                Hidden content
+              </div>
+              <button
+                type="button"
+                data-swj-copy="no-value-attr"
+                class="swj-button w-full justify-center"
+              >
+                Try Copying
+              </button>
+            </div>
 
-        <div class="example-section">
-            <h2>Example 4: Copy from a Code Block</h2>
-            <label>Code snippet:</label>
-            <pre class="copyable-code bg-gray-800 text-white p-4 rounded-md"><code data-swj-id="copy-code" data-swj-value>function greet() {
-    console.log("Hello, World!");
-}</code></pre>
-            <button type="button" data-swj-copy="copy-code">Copy Code</button>
+            <!-- Error 3 -->
+            <div class="bg-red-50 rounded-xl p-6 border border-red-100">
+              <h4 class="font-semibold text-red-800 mb-2">Empty Content</h4>
+              <p class="text-sm text-red-600 mb-4">Source element is empty.</p>
+              <div data-swj-id="empty-source" data-swj-value></div>
+              <button
+                type="button"
+                data-swj-copy="empty-source"
+                class="swj-button w-full justify-center"
+              >
+                Try Copying
+              </button>
+            </div>
+          </div>
         </div>
+      </div>
+    </main>
 
-        <div class="example-section">
-            <h2>Example 5: Button with Non-existent Target (Error Handling)</h2>
-            <label>This button targets an ID that doesn't exist:</label>
-            <button type="button" data-swj-copy="non-existent-id">Try Copying (will fail)</button>
-        </div>
+    <!-- Dynamic Content Script Example -->
+    <script>
+      // Example of adding dynamic content to test refresh()
+      setTimeout(() => {
+        const container = document.querySelector(".grid");
+        if (container) {
+          // Create a new card dynamically
+          const dynamicCard = document.createElement("div");
+          dynamicCard.className =
+            "bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden hover:shadow-md transition-shadow duration-300 border-l-4 border-l-brand-500";
+          dynamicCard.innerHTML = `
+                    <div class="p-6 border-b border-slate-100 bg-slate-50/50">
+                        <h3 class="text-lg font-semibold text-slate-900 flex items-center gap-2">
+                            <svg class="w-5 h-5 text-brand-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                            Dynamic Content
+                        </h3>
+                    </div>
+                    <div class="p-6 space-y-4">
+                        <p class="text-sm text-slate-600">This card was added 2 seconds after load.</p>
+                        <div>
+                            <input type="text" id="dynamicInput" data-swj-id="copy-dynamic" data-swj-value value="I am dynamic content!" class="block w-full rounded-lg border-slate-300 border p-3 focus:border-brand-500 focus:ring-brand-500 sm:text-sm text-slate-600">
+                        </div>
+                        <div class="flex justify-end">
+                            <button type="button" data-swj-copy="copy-dynamic" class="swj-button">Copy Dynamic</button>
+                        </div>
+                    </div>
+                `;
 
-        <div class="example-section">
-            <h2>Example 6: Source Element without `data-swj-value` (Error Handling)</h2>
-            <label>This source element is missing the `data-swj-value` attribute:</label>
-            <div data-swj-id="no-value-attr">This div has an ID but no 'data-swj-value'.</div>
-            <button type="button" data-swj-copy="no-value-attr">Try Copying (will fail)</button>
-        </div>
+          // Append to grid
+          // container.appendChild(dynamicCard); // Uncomment to test dynamic addition visually
 
-         <div class="example-section">
-            <h2>Example 7: Empty Source Element (Error Handling)</h2>
-            <label>This source element is empty:</label>
-            <div data-swj-id="empty-source" data-swj-value></div>
-            <button type="button" data-swj-copy="empty-source">Try Copying Empty (will fail)</button>
-        </div>
-
-    </div>
-</body>
+          // Note: In a real scenario, you would call SWJ.refresh() here
+          // SWJ.refresh();
+        }
+      }, 2000);
+    </script>
+  </body>
 </html>
