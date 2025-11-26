@@ -1,19 +1,20 @@
-const path = require('path');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const path = require("path");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
   entry: {
-    swj: './src/js/swj.js',
-    styles: './src/css/swj.css'
+    swj: "./src/js/swj.js",
+    styles: "./src/css/swj.css",
   },
   output: {
-    filename: '[name].js',
-    path: path.resolve(__dirname, 'dist'),
+    filename: "[name].js",
+    path: path.resolve(__dirname, "dist"),
     library: {
-      name: 'SWJ',
-      type: 'umd',
+      name: "SWJ",
+      type: "umd",
+      export: "default",
     },
-    globalObject: 'this'
+    globalObject: "this",
   },
   module: {
     rules: [
@@ -21,18 +22,18 @@ module.exports = {
         test: /\.js$/,
         exclude: /node_modules/,
         use: {
-          loader: 'babel-loader'
-        }
+          loader: "babel-loader",
+        },
       },
       {
         test: /\.css$/,
-        use: [MiniCssExtractPlugin.loader, 'css-loader']
-      }
-    ]
+        use: [MiniCssExtractPlugin.loader, "css-loader"],
+      },
+    ],
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: 'swj.css'
-    })
-  ]
+      filename: "swj.css",
+    }),
+  ],
 };
