@@ -4,6 +4,8 @@ A lightweight JavaScript tool for copying text from HTML elements with a single 
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE.md)
 
+![SenangWebs Jot](https://raw.githubusercontent.com/a-hakim/senangwebs-jot/refs/heads/master/swj_preview.gif)
+
 ## Features
 
 - **Simple Integration**: Add data attributes to your HTML, and SWJ handles the rest.
