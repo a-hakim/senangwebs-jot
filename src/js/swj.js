@@ -105,39 +105,65 @@ const SWJ = {
 		}
 	},
 
-	setDefaultButtonState(button, customText = null) {
-		const originalText =
-			button.getAttribute("data-swj-original-text") || customText || "Copy";
-		if (!button.hasAttribute("data-swj-original-text")) {
-			button.setAttribute(
-				"data-swj-original-text",
-				button.textContent || originalText
-			);
+	hasChildStateElements(button) {
+		return button.querySelector("[data-swj-state]") !== null;
+	},
+
+	setDefaultButtonState(button) {
+		// Store original content if not already stored
+		if (!button.hasAttribute("data-swj-original-html")) {
+			button.setAttribute("data-swj-original-html", button.innerHTML);
 		}
-		button.textContent = originalText;
-		button.className = `swj-button ${this.config.classes.default}`;
+
+		// Update classes
+		button.classList.add("swj-button", this.config.classes.default);
+		button.classList.remove(this.config.classes.copied, this.config.classes.error);
 		button.setAttribute("aria-label", "Copy to clipboard");
+
+		// If using child element approach, visibility is handled by CSS
+		if (this.hasChildStateElements(button)) {
+			return;
+		}
+
+		// Data attribute approach - use custom content or original
+		const customDefault = button.getAttribute("data-swj-default");
+		const originalHtml = button.getAttribute("data-swj-original-html");
+		button.innerHTML = customDefault || originalHtml;
 	},
 
 	setCopiedButtonState(button) {
-		const originalText =
-			button.getAttribute("data-swj-original-text") || "Copy";
-		button.textContent = "Copied!";
-		button.className = `swj-button ${this.config.classes.copied}`;
+		// Update classes
+		button.classList.add("swj-button", this.config.classes.copied);
+		button.classList.remove(this.config.classes.default, this.config.classes.error);
 		button.setAttribute("aria-label", "Copied successfully");
+
+		// If using child element approach, visibility is handled by CSS
+		if (!this.hasChildStateElements(button)) {
+			// Data attribute approach
+			const customCopied = button.getAttribute("data-swj-copied");
+			button.innerHTML = customCopied || "Copied!";
+		}
+
 		setTimeout(() => {
-			this.setDefaultButtonState(button, originalText);
+			this.setDefaultButtonState(button);
 		}, this.config.timeout);
 	},
 
 	setErrorButtonState(button, message = "Failed!") {
-		const originalText =
-			button.getAttribute("data-swj-original-text") || "Copy";
-		button.textContent = message;
-		button.className = `swj-button ${this.config.classes.error}`;
+		// Update classes
+		button.classList.add("swj-button", this.config.classes.error);
+		button.classList.remove(this.config.classes.default, this.config.classes.copied);
 		button.setAttribute("aria-label", "Copy failed");
+
+		// If using child element approach, visibility is handled by CSS
+		if (!this.hasChildStateElements(button)) {
+			// Data attribute approach
+			const customError = button.getAttribute("data-swj-error");
+			button.innerHTML = customError || message;
+		}
+
 		setTimeout(() => {
-			this.setDefaultButtonState(button, originalText);
+			this.setDefaultButtonState(button);
 		}, this.config.timeout);
 	},
 };

@@ -1,1 +1,191 @@
-!function(t,e){"object"==typeof exports&&"object"==typeof module?module.exports=e():"function"==typeof define&&define.amd?define([],e):"object"==typeof exports?exports.SWJ=e():t.SWJ=e()}(this,(()=>(()=>{"use strict";var t={d:(e,o)=>{for(var a in o)t.o(o,a)&&!t.o(e,a)&&Object.defineProperty(e,a,{enumerable:!0,get:o[a]})},o:(t,e)=>Object.prototype.hasOwnProperty.call(t,e)},e={};t.d(e,{default:()=>a});const o={config:{timeout:2500,classes:{default:"swj-button-default",copied:"swj-button-copied",error:"swj-button-error"},autoInit:!0},init(t={}){t&&(this.config={...this.config,...t,classes:{...this.config.classes,...t.classes||{}}}),this.attachEventListeners()},refresh(){this.attachEventListeners()},attachEventListeners(){document.querySelectorAll("[data-swj-copy]:not([data-swj-attached])").forEach((t=>{t.addEventListener("click",(()=>this.handleCopy(t))),t.setAttribute("data-swj-attached","true"),t.setAttribute("aria-label","Copy to clipboard"),this.setDefaultButtonState(t)}))},async handleCopy(t){const e=t.getAttribute("data-swj-copy");if(!e)return console.warn("SWJ: Button is missing data-swj-copy attribute or its value is empty."),void this.setErrorButtonState(t,"No ID");const o=document.querySelector(`[data-swj-id="${e}"][data-swj-value]`);if(!o)return console.warn(`SWJ: No source element found with data-swj-id="${e}" and data-swj-value attribute.`),void this.setErrorButtonState(t,"No Src");let a;if(a="INPUT"===o.tagName||"TEXTAREA"===o.tagName?o.value:o.textContent,null===a||""===a.trim())return console.warn(`SWJ: Source element with data-swj-id="${e}" has no content to copy.`),void this.setErrorButtonState(t,"Empty");try{if(navigator.clipboard&&navigator.clipboard.writeText)await navigator.clipboard.writeText(a),this.setCopiedButtonState(t);else{if(!document.execCommand)throw new Error("SWJ: Clipboard API not supported.");{const e=document.createElement("textarea");e.value=a,e.style.position="absolute",e.style.left="-9999px",document.body.appendChild(e),e.select(),document.execCommand("copy"),document.body.removeChild(e),this.setCopiedButtonState(t)}}}catch(e){console.error("SWJ: Failed to copy text: ",e),this.setErrorButtonState(t,"Failed!")}},setDefaultButtonState(t,e=null){const o=t.getAttribute("data-swj-original-text")||e||"Copy";t.hasAttribute("data-swj-original-text")||t.setAttribute("data-swj-original-text",t.textContent||o),t.textContent=o,t.className=`swj-button ${this.config.classes.default}`,t.setAttribute("aria-label","Copy to clipboard")},setCopiedButtonState(t){const e=t.getAttribute("data-swj-original-text")||"Copy";t.textContent="Copied!",t.className=`swj-button ${this.config.classes.copied}`,t.setAttribute("aria-label","Copied successfully"),setTimeout((()=>{this.setDefaultButtonState(t,e)}),this.config.timeout)},setErrorButtonState(t,e="Failed!"){const o=t.getAttribute("data-swj-original-text")||"Copy";t.textContent=e,t.className=`swj-button ${this.config.classes.error}`,t.setAttribute("aria-label","Copy failed"),setTimeout((()=>{this.setDefaultButtonState(t,o)}),this.config.timeout)}};"undefined"!=typeof document&&document.addEventListener("DOMContentLoaded",(()=>{o.config.autoInit&&o.init()}));const a=o;return e.default})()));
+(function webpackUniversalModuleDefinition(root, factory) {
+	if(typeof exports === 'object' && typeof module === 'object')
+		module.exports = factory();
+	else if(typeof define === 'function' && define.amd)
+		define([], factory);
+	else if(typeof exports === 'object')
+		exports["SWJ"] = factory();
+	else
+		root["SWJ"] = factory();
+})(this, () => {
+return /******/ (() => { // webpackBootstrap
+/******/ 	"use strict";
+/******/ 	// The require scope
+/******/ 	var __webpack_require__ = {};
+/******/ 	
+/************************************************************************/
+/******/ 	/* webpack/runtime/define property getters */
+/******/ 	(() => {
+/******/ 		// define getter functions for harmony exports
+/******/ 		__webpack_require__.d = (exports, definition) => {
+/******/ 			for(var key in definition) {
+/******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
+/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
+/******/ 				}
+/******/ 			}
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/hasOwnProperty shorthand */
+/******/ 	(() => {
+/******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
+/******/ 	})();
+/******/ 	
+/************************************************************************/
+var __webpack_exports__ = {};
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+
+const SWJ = {
+  config: {
+    timeout: 2500,
+    classes: {
+      default: "swj-button-default",
+      copied: "swj-button-copied",
+      error: "swj-button-error"
+    },
+    autoInit: true
+  },
+  init(options = {}) {
+    if (options) {
+      this.config = {
+        ...this.config,
+        ...options,
+        classes: {
+          ...this.config.classes,
+          ...(options.classes || {})
+        }
+      };
+    }
+    this.attachEventListeners();
+  },
+  refresh() {
+    this.attachEventListeners();
+  },
+  attachEventListeners() {
+    const copyButtons = document.querySelectorAll("[data-swj-copy]:not([data-swj-attached])");
+    copyButtons.forEach(button => {
+      button.addEventListener("click", () => this.handleCopy(button));
+      button.setAttribute("data-swj-attached", "true");
+      button.setAttribute("aria-label", "Copy to clipboard");
+      this.setDefaultButtonState(button);
+    });
+  },
+  async handleCopy(button) {
+    const targetId = button.getAttribute("data-swj-copy");
+    if (!targetId) {
+      console.warn("SWJ: Button is missing data-swj-copy attribute or its value is empty.");
+      this.setErrorButtonState(button, "No ID");
+      return;
+    }
+    const sourceElement = document.querySelector(`[data-swj-id="${targetId}"][data-swj-value]`);
+    if (!sourceElement) {
+      console.warn(`SWJ: No source element found with data-swj-id="${targetId}" and data-swj-value attribute.`);
+      this.setErrorButtonState(button, "No Src");
+      return;
+    }
+    let textToCopy;
+    if (sourceElement.tagName === "INPUT" || sourceElement.tagName === "TEXTAREA") {
+      textToCopy = sourceElement.value;
+    } else {
+      textToCopy = sourceElement.textContent;
+    }
+    if (textToCopy === null || textToCopy.trim() === "") {
+      console.warn(`SWJ: Source element with data-swj-id="${targetId}" has no content to copy.`);
+      this.setErrorButtonState(button, "Empty");
+      return;
+    }
+    try {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        await navigator.clipboard.writeText(textToCopy);
+        this.setCopiedButtonState(button);
+      } else if (document.execCommand) {
+        // Fallback
+        const tempTextArea = document.createElement("textarea");
+        tempTextArea.value = textToCopy;
+        tempTextArea.style.position = "absolute";
+        tempTextArea.style.left = "-9999px";
+        document.body.appendChild(tempTextArea);
+        tempTextArea.select();
+        document.execCommand("copy");
+        document.body.removeChild(tempTextArea);
+        this.setCopiedButtonState(button);
+      } else {
+        throw new Error("SWJ: Clipboard API not supported.");
+      }
+    } catch (err) {
+      console.error("SWJ: Failed to copy text: ", err);
+      this.setErrorButtonState(button, "Failed!");
+    }
+  },
+  hasChildStateElements(button) {
+    return button.querySelector("[data-swj-state]") !== null;
+  },
+  setDefaultButtonState(button) {
+    // Store original content if not already stored
+    if (!button.hasAttribute("data-swj-original-html")) {
+      button.setAttribute("data-swj-original-html", button.innerHTML);
+    }
+
+    // Update classes
+    button.classList.add("swj-button", this.config.classes.default);
+    button.classList.remove(this.config.classes.copied, this.config.classes.error);
+    button.setAttribute("aria-label", "Copy to clipboard");
+
+    // If using child element approach, visibility is handled by CSS
+    if (this.hasChildStateElements(button)) {
+      return;
+    }
+
+    // Data attribute approach - use custom content or original
+    const customDefault = button.getAttribute("data-swj-default");
+    const originalHtml = button.getAttribute("data-swj-original-html");
+    button.innerHTML = customDefault || originalHtml;
+  },
+  setCopiedButtonState(button) {
+    // Update classes
+    button.classList.add("swj-button", this.config.classes.copied);
+    button.classList.remove(this.config.classes.default, this.config.classes.error);
+    button.setAttribute("aria-label", "Copied successfully");
+
+    // If using child element approach, visibility is handled by CSS
+    if (!this.hasChildStateElements(button)) {
+      // Data attribute approach
+      const customCopied = button.getAttribute("data-swj-copied");
+      button.innerHTML = customCopied || "Copied!";
+    }
+    setTimeout(() => {
+      this.setDefaultButtonState(button);
+    }, this.config.timeout);
+  },
+  setErrorButtonState(button, message = "Failed!") {
+    // Update classes
+    button.classList.add("swj-button", this.config.classes.error);
+    button.classList.remove(this.config.classes.default, this.config.classes.copied);
+    button.setAttribute("aria-label", "Copy failed");
+
+    // If using child element approach, visibility is handled by CSS
+    if (!this.hasChildStateElements(button)) {
+      // Data attribute approach
+      const customError = button.getAttribute("data-swj-error");
+      button.innerHTML = customError || message;
+    }
+    setTimeout(() => {
+      this.setDefaultButtonState(button);
+    }, this.config.timeout);
+  }
+};
+if (typeof document !== "undefined") {
+  document.addEventListener("DOMContentLoaded", () => {
+    if (SWJ.config.autoInit) {
+      SWJ.init();
+    }
+  });
+}
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (SWJ);
+__webpack_exports__ = __webpack_exports__["default"];
+/******/ 	return __webpack_exports__;
+/******/ })()
+;
+});

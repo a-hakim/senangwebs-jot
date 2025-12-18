@@ -1,20 +1,22 @@
 {
   "name": "senangwebs-jot",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Lightweight JavaScript tool that lets you copy text from HTML elements with a single click.",
   "scripts": {
     "build": "webpack --mode production",
     "dev": "webpack --mode development --watch"
   },
   "devDependencies": {
+    "@babel/core": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "babel-loader": "^9.0.0",
     "css-loader": "^6.0.0",
+    "css-minimizer-webpack-plugin": "^7.0.4",
     "mini-css-extract-plugin": "^2.0.0",
     "style-loader": "^3.0.0",
+    "terser-webpack-plugin": "^5.3.16",
     "webpack": "^5.0.0",
-    "webpack-cli": "^4.0.0",
-    "babel-loader": "^9.0.0",
-    "@babel/core": "^7.0.0",
-    "@babel/preset-env": "^7.0.0"
+    "webpack-cli": "^4.0.0"
   },
   "keywords": [
     "clipboard",

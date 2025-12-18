@@ -1,10 +1,12 @@
 const path = require("path");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
+const TerserPlugin = require("terser-webpack-plugin");
 
 module.exports = {
   entry: {
-    swj: "./src/js/swj.js",
-    styles: "./src/css/swj.css",
+    "swj": "./src/js/swj.js",
+    "swj.min": "./src/js/swj.js",
   },
   output: {
     filename: "[name].js",
@@ -15,6 +17,7 @@ module.exports = {
       export: "default",
     },
     globalObject: "this",
+    clean: true,
   },
   module: {
     rules: [
@@ -33,7 +36,18 @@ module.exports = {
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: "swj.css",
+      filename: "[name].css",
     }),
   ],
+  optimization: {
+    minimize: true,
+    minimizer: [
+      new TerserPlugin({
+        test: /\.min\.js$/,
+      }),
+      new CssMinimizerPlugin({
+        test: /\.min\.css$/,
+      }),
+    ],
+  },
 };

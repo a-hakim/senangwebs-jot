@@ -53,3 +53,20 @@
 .swj-button-error:focus {
   --tw-ring-color: rgba(239, 68, 68, var(--tw-ring-opacity)); /* ring-red-500 */
 }
+
+/* Child element approach - visibility toggling */
+[data-swj-state] {
+  display: none;
+}
+
+.swj-button-default [data-swj-state="default"] {
+  display: inline;
+}
+
+.swj-button-copied [data-swj-state="copied"] {
+  display: inline;
+}
+
+.swj-button-error [data-swj-state="error"] {
+  display: inline;
+}

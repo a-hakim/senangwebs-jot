@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SenangWebs Jot - Premium Demo</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://unpkg.com/@bookklik/senangstart-icons/dist/senangstart.min.css" />
     <link rel="stylesheet" href="../dist/swj.css" />
     <script src="../dist/swj.js" defer></script>
     <script>
@@ -41,19 +42,7 @@
               <h3
                 class="text-lg font-semibold text-slate-900 flex items-center gap-2"
               >
-                <svg
-                  class="w-5 h-5 text-brand-500"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-                  ></path>
-                </svg>
+                <i class="ss ss-document-text"></i>
                 Textarea
               </h3>
             </div>
@@ -94,19 +83,7 @@ This is some text inside a textarea. It preserves formatting and line breaks.</t
               <h3
                 class="text-lg font-semibold text-slate-900 flex items-center gap-2"
               >
-                <svg
-                  class="w-5 h-5 text-brand-500"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"
-                  ></path>
-                </svg>
+                <i class="ss ss-arrow-top-right-on-square"></i>
                 Input Field
               </h3>
             </div>
@@ -148,19 +125,7 @@ This is some text inside a textarea. It preserves formatting and line breaks.</t
               <h3
                 class="text-lg font-semibold text-slate-900 flex items-center gap-2"
               >
-                <svg
-                  class="w-5 h-5 text-brand-500"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M4 6h16M4 12h16M4 18h7"
-                  ></path>
-                </svg>
+                <i class="ss ss-text-align-left"></i>
                 Div Content
               </h3>
             </div>
@@ -196,19 +161,7 @@ This is some text inside a textarea. It preserves formatting and line breaks.</t
               <h3
                 class="text-lg font-semibold text-slate-900 flex items-center gap-2"
               >
-                <svg
-                  class="w-5 h-5 text-brand-500"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
-                  ></path>
-                </svg>
+                <i class="ss ss-code"></i>
                 Code Block
               </h3>
             </div>
@@ -234,6 +187,84 @@ This is some text inside a textarea. It preserves formatting and line breaks.</t
 
 // Initialize the greeter
 greet('Developer');</code></pre>
+            </div>
+          </div>
+
+          <!-- Example 5: Custom Content with Data Attributes -->
+          <div
+            class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden hover:shadow-md transition-shadow duration-300"
+          >
+            <div class="p-6 border-b border-slate-100 bg-slate-50/50">
+              <h3
+                class="text-lg font-semibold text-slate-900 flex items-center gap-2"
+              >
+                <i class="ss ss-focus"></i>
+                Custom Content (Data Attributes)
+              </h3>
+            </div>
+            <div class="p-6 space-y-4">
+              <p class="text-sm text-slate-600">
+                Uses <code>data-swj-copied</code> to customize the copied state with icons.
+              </p>
+              <div>
+                <input
+                  type="text"
+                  data-swj-id="copy-custom-attr"
+                  data-swj-value
+                  value="Custom content via data attributes!"
+                  class="block w-full rounded-lg border-slate-300 border p-3 focus:border-brand-500 focus:ring-brand-500 sm:text-sm text-slate-600"
+                />
+              </div>
+              <div class="flex justify-end">
+                <button
+                  type="button"
+                  data-swj-copy="copy-custom-attr"
+                  data-swj-copied="<i class='ss ss-check'></i> Copied!"
+                  data-swj-error="<i class='ss ss-x-mark'></i> Error!"
+                  class="swj-button"
+                >
+                  <i class="ss ss-document-duplicate"></i> Copy
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Example 6: Custom Content with Child Elements -->
+          <div
+            class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden hover:shadow-md transition-shadow duration-300"
+          >
+            <div class="p-6 border-b border-slate-100 bg-slate-50/50">
+              <h3
+                class="text-lg font-semibold text-slate-900 flex items-center gap-2"
+              >
+                <i class="ss ss-layout"></i>
+                Custom Content (Child Elements)
+              </h3>
+            </div>
+            <div class="p-6 space-y-4">
+              <p class="text-sm text-slate-600">
+                Uses <code>data-swj-state</code> on child elements for visibility toggling.
+              </p>
+              <div>
+                <input
+                  type="text"
+                  data-swj-id="copy-custom-child"
+                  data-swj-value
+                  value="Custom content via child elements!"
+                  class="block w-full rounded-lg border-slate-300 border p-3 focus:border-brand-500 focus:ring-brand-500 sm:text-sm text-slate-600"
+                />
+              </div>
+              <div class="flex justify-end">
+                <button
+                  type="button"
+                  data-swj-copy="copy-custom-child"
+                  class="swj-button"
+                >
+                  <span data-swj-state="default"><i class="ss ss-document-duplicate"></i> Copy</span>
+                  <span data-swj-state="copied"><i class="ss ss-check"></i> Copied!</span>
+                  <span data-swj-state="error"><i class="ss ss-x-mark"></i> Failed!</span>
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -304,11 +335,11 @@ greet('Developer');</code></pre>
           // Create a new card dynamically
           const dynamicCard = document.createElement("div");
           dynamicCard.className =
-            "bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden hover:shadow-md transition-shadow duration-300 border-l-4 border-l-brand-500";
+            "bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden hover:shadow-md transition-shadow duration-300 border-l-4 border-l-brand-500 lg:col-span-2";
           dynamicCard.innerHTML = `
                     <div class="p-6 border-b border-slate-100 bg-slate-50/50">
                         <h3 class="text-lg font-semibold text-slate-900 flex items-center gap-2">
-                            <svg class="w-5 h-5 text-brand-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                            <i class="ss ss-bolt"></i>
                             Dynamic Content
                         </h3>
                     </div>

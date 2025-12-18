@@ -2,6 +2,8 @@
 
 A lightweight JavaScript tool for copying text from HTML elements with a single click.
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE.md)
+
 ## Features
 
 - **Simple Integration**: Add data attributes to your HTML, and SWJ handles the rest.
@@ -38,9 +40,9 @@ Include the files directly in your HTML:
 ```html
 <link
   rel="stylesheet"
-  href="https://unpkg.com/senangwebs-jot@latest/dist/swj.css"
+  href="https://unpkg.com/senangwebs-jot@latest/dist/swj.min.css"
 />
-<script src="https://unpkg.com/senangwebs-jot@latest/dist/swj.js"></script>
+<script src="https://unpkg.com/senangwebs-jot@latest/dist/swj.min.js"></script>
 ```
 
 ## Usage
@@ -64,6 +66,38 @@ Include the files directly in your HTML:
     <!-- Button -->
     <button type="button" data-swj-copy="code-snippet">Copy Code</button>
     ```
+
+## Custom Button Content
+
+Customize button content for different states (default, copied, error) using two approaches:
+
+### Approach 1: Data Attributes
+
+Use `data-swj-default`, `data-swj-copied`, and `data-swj-error` attributes on the button for HTML content:
+
+```html
+<button
+  data-swj-copy="my-id"
+  data-swj-copied="<i class='icon-check'></i> Copied!"
+  data-swj-error="<i class='icon-x'></i> Error!"
+>
+  <i class="icon-copy"></i> Copy
+</button>
+```
+
+### Approach 2: Child Elements
+
+Use `data-swj-state` on child elements for visibility toggling:
+
+```html
+<button data-swj-copy="my-id">
+  <span data-swj-state="default"><i class="icon-copy"></i> Copy</span>
+  <span data-swj-state="copied"><i class="icon-check"></i> Copied!</span>
+  <span data-swj-state="error"><i class="icon-x"></i> Failed!</span>
+</button>
+```
+
+Child elements are automatically shown/hidden based on the button's current state.
 
 ## Dynamic Content
 
