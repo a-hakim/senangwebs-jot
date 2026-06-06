@@ -17,23 +17,31 @@ A lightweight JavaScript tool for copying text from HTML elements with a single 
 
 ## Demo
 
-Run `npm run dev` to generate a demo at `dist/index.html`. Open this file in your browser to see the library in action.
+Run `npm run build`, then open `examples/index.html` in your browser.
 
 ## Installation
 
-### Option 1: NPM
+### Option 1: npm
 
-1.  Install dependencies:
+```bash
+npm install senangwebs-jot
+```
 
-    ```bash
-    npm install
-    ```
+Import the JavaScript and CSS in your application:
 
-2.  Build the library:
-    ```bash
-    npm run build
-    ```
-    This generates `swj.js` and `swj.css` in the `dist/` folder.
+```javascript
+import SWJ from "senangwebs-jot";
+import "senangwebs-jot/dist/swj.css";
+
+// SWJ initializes automatically on DOMContentLoaded.
+// Call SWJ.refresh() after adding copy buttons dynamically.
+```
+
+The package also supports CommonJS:
+
+```javascript
+const SWJ = require("senangwebs-jot");
+```
 
 ### Option 2: CDN
 
@@ -107,21 +115,19 @@ If you add elements dynamically, call `SWJ.refresh()` to attach event listeners 
 
 ```javascript
 setTimeout(() => {
-  // Create the content to copy
   const contentToCopy = document.createElement("textarea");
   contentToCopy.setAttribute("data-swj-id", "code-snippet");
-  contentToCopy.setAttribute("data-swj-value", "console.log('Hello World');");
-  contentToCopy.setAttribute("style", "display: none");
-  contentToCopy.innerHTML = "console.log('Hello World'); Copy dynamic content";
+  contentToCopy.setAttribute("data-swj-value", "");
+  contentToCopy.hidden = true;
+  contentToCopy.value = "console.log('Hello World');";
   document.body.appendChild(contentToCopy);
 
-  // Create the button
   const button = document.createElement("button");
+  button.type = "button";
   button.setAttribute("data-swj-copy", "code-snippet");
   button.textContent = "Copy Code";
   document.body.appendChild(button);
 
-  // Refresh SWJ to attach event listeners to the new button
   SWJ.refresh();
 }, 1000);
 ```

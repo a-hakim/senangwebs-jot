@@ -1,7 +1,17 @@
 {
   "name": "senangwebs-jot",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Lightweight JavaScript tool that lets you copy text from HTML elements with a single click.",
+  "main": "./dist/swj.js",
+  "style": "./dist/swj.css",
+  "unpkg": "./dist/swj.min.js",
+  "jsdelivr": "./dist/swj.min.js",
+  "files": [
+    "dist",
+    "README.md",
+    "SKILLS.md",
+    "LICENSE.md"
+  ],
   "scripts": {
     "build": "webpack --mode production",
     "dev": "webpack --mode development --watch"
